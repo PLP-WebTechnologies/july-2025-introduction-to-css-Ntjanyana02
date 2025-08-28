@@ -1,0 +1,174 @@
+/* ====== Base & Resets ====== */
+/* Use border-box for saner sizing; we’ll override in the lab for comparison */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root {
+  --bg: #0e1116;
+  --surface: #141923;
+  --card: #1b2230;
+  --text: #e8eef7;
+  --muted: #b7c3d1;
+  --brand: #4da3ff;
+  --border: #2a3346;
+  --shadow: 0 6px 18px rgba(0,0,0,.25);
+  --radius: 12px;
+  --space-1: .5rem;
+  --space-2: .75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-6: 2rem;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  line-height: 1.55;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg), #0c1017);
+}
+
+/* ====== Utilities ====== */
+.container {
+  max-width: 1000px;
+  padding-inline: var(--space-3);
+  margin-inline: auto;
+}
+
+.stack > * + * {
+  margin-top: var(--space-3);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip:focus {
+  left: 0;
+  background: #fff;
+  color: #000;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 6px;
+}
+
+/* ====== Header / Nav ====== */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: var(--space-3);
+}
+
+.site-header h1 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: clamp(1.25rem, 2vw + 1rem, 2rem);
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: .35rem .65rem;
+  border-radius: 6px;
+}
+.nav a:hover,
+.nav a:focus {
+  background: #23304a;
+  color: #fff;
+}
+
+/* ====== Cards ====== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow);
+  min-height: 160px;
+}
+
+.btn {
+  display: inline-block;
+  width: fit-content;
+  background: var(--brand);
+  color: #081222;
+  font-weight: 600;
+  text-decoration: none;
+  padding: .6rem .9rem;
+  border-radius: 999px;
+  border: 2px solid #7bc0ff;
+}
+.btn:hover,
+.btn:focus {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* ====== Box Model Lab ====== */
+.box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.box {
+  background: #0f1520;
+  border: 8px solid #304562;
+  padding: 16px;
+  margin: 12px;              /* external space */
+  width: 220px;              /* declared width for comparison */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Demonstrate default vs border-box sizing explicitly */
+.content-box { box-sizing: content-box; } /* width applies to content only */
+.border-box  { box-sizing: border-box; }  /* width includes padding + border */
+
+.box-title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #9ed0ff;
+}
+
+.note {
+  background: #0f1520;
+  border: 1px dashed #385276;
+  padding: var(--space-2);
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+/* ====== Footer ====== */
+.site-footer {
+  margin-top: var(--space-6);
+  padding: var(--space-3);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ====== Small screens ====== */
+@media (max-width: 520px) {
+  .nav { gap: var(--space-2); }
+  .box { margin: 8px; }
+}
