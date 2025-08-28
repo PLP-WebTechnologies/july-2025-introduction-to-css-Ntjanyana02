@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Basics & The Box Model — Demo</title>
+  <meta name="description" content="A small site to practice core CSS, selectors, and the Box Model (margin, border, padding, content)." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <h1>CSS Basics &amp; The Box Model</h1>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#box-model">Box Model Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container stack">
+    <section id="overview" class="stack">
+      <h2>What you’ll practice</h2>
+      <p>This page shows clean selectors, consistent spacing, and a hands-on box model demo.</p>
+      <ul>
+        <li>Connect an external stylesheet and use readable selectors.</li>
+        <li>Style text, backgrounds, and simple layouts.</li>
+        <li>Understand how <strong>margin</strong>, <strong>border</strong>, and <strong>padding</strong> affect size and spacing.</li>
+      </ul>
+    </section>
+
+    <section id="cards" class="stack">
+      <h2>Card examples (layout + spacing)</h2>
+      <div class="card-grid">
+        <article class="card stack">
+          <h3>Starter</h3>
+          <p>Small, focused content block styled with padding, border, and background.</p>
+          <a class="btn" href="#">Choose Starter</a>
+        </article>
+
+        <article class="card stack">
+          <h3>Pro</h3>
+          <p>Demonstrates consistent spacing using a utility “stack” pattern (margin-top only).</p>
+          <a class="btn" href="#">Choose Pro</a>
+        </article>
+
+        <article class="card stack">
+          <h3>Business</h3>
+          <p>Borders and shadows make the box boundaries visible without extra markup.</p>
+          <a class="btn" href="#">Choose Business</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="box-model" class="stack">
+      <h2>Box Model Lab</h2>
+      <p>Each box below has a declared width of <code>220px</code>, with <em>padding</em> and <em>border</em> applied. One uses <code>content-box</code> (default), the other <code>border-box</code>.</p>
+
+      <div class="box-grid">
+        <div class="box content-box">
+          <h3 class="box-title">content-box (default)</h3>
+          <ul>
+            <li><strong>width:</strong> 220px (content only)</li>
+            <li><strong>padding:</strong> 16px</li>
+            <li><strong>border:</strong> 8px</li>
+            <li><strong>margin:</strong> 12px</li>
+          </ul>
+          <p>Total visual width = 220 + 16*2 + 8*2 = <strong>268px</strong></p>
+        </div>
+
+        <div class="box border-box">
+          <h3 class="box-title">border-box</h3>
+          <ul>
+            <li><strong>width:</strong> 220px (includes padding + border)</li>
+            <li><strong>padding:</strong> 16px</li>
+            <li><strong>border:</strong> 8px</li>
+            <li><strong>margin:</strong> 12px</li>
+          </ul>
+          <p>Total visual width remains <strong>220px</strong> (content shrinks to fit).</p>
+        </div>
+      </div>
+
+      <aside class="note">
+        Tip: Setting <code>* { box-sizing: border-box; }</code> often simplifies layout math in real projects.
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <time datetime="2025">2025</time> CSS Practice Demo</p>
+  </footer>
+</body>
+</html>
